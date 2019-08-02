@@ -1,0 +1,274 @@
+aqua 
+cgml
+cgma
+cgmi
+cbna
+gbpcash
+inrcash
+jpycash
+usmuni
+aud
+hi aqua 
+ars
+chf
+cgml
+gbcorp
+gbpcash
+inrcash
+uscorp
+locusd
+usequity
+ustips
+usstrips
+audcash
+search
+and search
+clear 
+clear bookmark
+reset 
+actual postings
+but not cgml
+but not gbcorp
+but not gbpcash
+but not inrcash
+but not jpycash
+but not usmuni
+but not cbna
+but not locusd
+but not usequity
+but not ustips
+but not usstrips
+but not audcash
+currency aud
+ars
+chf
+aqua 
+hi aqua
+aqua 
+currency chf 
+select uscorp
+select usmuni
+select cgma
+select cgml
+select cgmi
+select cgml
+select cbna
+select locusd
+select usequity
+select ustips
+select usstrips
+select audcash
+search
+and search
+clear 
+clear bookmark
+reset 
+actual postings
+cgml
+cgma
+cbna
+cgmi
+cgma and cgmi but not cgml
+cgmi but not cgml
+cgml
+cbna
+cgml and cgmi but not cgma
+cbna and cgml but not cgmi
+cbna  
+csa status
+dormant 
+csa status dormant
+drafted
+aqua 
+aqua aqua
+csa status drafted
+evergreen
+csa status evergreen
+executed
+csa status executed
+inactivated 
+csa status inactivated
+not covered 
+csa status not covered
+poposed
+csa status poposed
+terminated
+csa status terminated
+hi aqua
+dormant
+drafted
+evergreen
+executed
+inactivated
+not covered
+poposed
+terminated
+select csa status 
+csa status
+issue currency
+select issue currency aud and ars but not chf
+select issue currency ars and chf but not aud
+select issue currency chf and aud but not ars
+issue currency aud 
+issue currency ars
+issue currency chf
+select issue currency 
+issue currency
+select aud
+select ars
+select chf
+uscorp usmuni
+locusd usequity
+ustips usstrips
+audcash jpycash gbpcash
+cgml and cgma 
+collateral
+collateral jpycash gbcorp but not inrcash search
+collateral uscorp but not usmuni search
+collateral usmuni and uscorp but not inrcash search
+collateral uscorp and usmuni but not inrcash search 
+collateral locusd and ustips but not audcash search 
+collateral usequity and locusd but not ustips search
+collateral ustips and usequity but not usstrips search
+collateral usstrips and audcash but not locusd search
+collateral audcash and usstrips but not usequity search
+collateral gbcorp
+collateral gbpcash
+collateral gbpcash
+collateral uscorp
+collateral usmuni
+collateral gbpcash
+collateral inrcash
+uscorp but not usmuni
+collateral uscorp and gbpcash but not inrcash
+collateral type uscorp but not usmuni
+collateral uscorp and gbpcash but not inrcash
+collateral uscorp but not usmuni
+collateral uscorp usmuni
+collateral usmuni and uscorp
+gbcorp
+gbcorp
+gbcorp but not
+gbpcash
+gbpcash 
+gbpcash but not
+clear
+and clear
+collateral usmuni and uscorp but not inrcash
+give collateral uscorp and inrcash but not usmuni
+collateral
+collateral uscorp inrcash but not usmuni
+collateral gbcorp jpycash inrcash 
+collateral gbcorp jpycash but not inrcash 
+collateral gbcorp jpycash inrcash but not usmuni
+collateral uscorp and gbpcash but not inrcash
+inrcash
+inrcash
+inrcash but not
+want collateral name uscorp and usmuni but not inrcash
+want collateral type name uscorp and gbpcash but not inrcash
+want collateral type name uscorp but not usmuni
+jpycash
+jpycash
+locusd
+usequity
+want collateral name locusd and usequity but not inrcash
+collateral type name uscorp and audcash but not usequity
+want collateral type name usequity but not usmuni
+ustips
+ustips but not
+usstrips
+aqua
+hi aqua
+audcash
+audcash but not
+legal entity
+legal entity cgma and cgml
+cgmi and cgma
+legal entity cgmi and cgml
+cgml but not cgma
+legal entity cgml but not cgmi
+cgnl and cgna
+cgma and cgml
+legal entity cgna and cgma
+cgmi and cgna
+legal entity cgna but not cgmi
+cgml and cgna but not cgmi
+clear
+and clear
+select collateral
+select collateral gbcorp jpycash  
+collateral uscorp and gbpcash but not inrcash
+select collateral uscorp and inrcash but not usmuni
+collateral uscorp but not usmuni
+collateral uscorp and usmuni but not inrcash
+collateral usmuni and uscorp but not inrcash
+select legal entity
+show collateral
+collateral gbcorp and jpycash
+collateral gbcorp and jpycash but not usmuni
+collateral gbcorp and jpycash but not inrcash
+collateral uscorp and inrcash but not usmuni
+uscorp and usmuni but not inrcash
+collateral uscorp but not usmuni
+collateral usmuni and uscorp but not inrcash
+show legal entity
+hi aqua
+hi aqua
+uscorp and usmuni but not jpycash
+uscorp
+uscorp
+uscorp usmuni
+uscorp usmuni but not inrcash
+uscorp but not
+uscorp but not inrcash
+uscorp but not jpycash
+usmuni
+usmuni
+usmuni but not inrcash
+usmuni but not jpycash
+want collateral 
+uscorp and issue currency aud usmuni but not inrcash search
+usmuni and issue currency ars uscorp but not inrcash and search 
+uscorp and issue currency chf jpycash but not gbpcash search
+usequity and issue currency aud usmuni but not inrcash and search
+audcash and issue currency ars uscorp but not audcash search
+ustips and issue currency chf jpycash but not gbpcash and search
+collateral gbcorp and jpycash search
+collateral gbcorp and jpycash but not inrcash search
+collateral name usmuni and uscorp but not inrcash search
+collateral type name uscorp and inrcash but not usmuni search
+collateral uscorp
+collateral usequity locusd but not audcash
+collateral uscorp usmuni gbpcash
+want legal entity
+collateral legal entity csa status
+collateral uscorp legal entity cgml csa status dormant
+uscorp legal entity cgma csa status drafted
+collateral uscorp cgmi csa status evergreen
+uscorp legal entity cgml csa status executed
+collateral uscorp cgma csa status inactivated
+uscorp legal entity cgmi csa status not covered
+collateral uscorp cgml csa status poposed
+uscorp legal entity cgna csa status terminated
+uscorp legal entity cgml issue currency aud csa status executed 
+collateral uscorp cgma issue currency ars csa status inactivated 
+uscorp legal entity cgmi issue currency chf csa status not covered 
+collateral uscorp legal entity cbna issue currency aud csa status evergreen
+usmuni legal entity cgml ars csa status dormant
+collateral  inrcash legal entity cgmi issue currency chf drafted
+jpycash legal entity cgma issue currency aud csa status executed
+collateral uscorp legal entity cgml issue currency ars inactivated
+gbpcash legal entity cbna issue currency chf csa status not covered
+hi aqua
+collateral gbcorp legal entity cgml issue currency chf terminated
+has 
+has posted
+search
+and search
+clear 
+clear bookmark
+reset 
+actual postings
+aqua
+hi aqua

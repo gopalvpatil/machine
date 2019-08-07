@@ -21,11 +21,6 @@ usequity
 ustips
 usstrips
 audcash
-search
-and search
-clear 
-clear bookmark
-reset 
 actual postings
 but not cgml
 but not gbcorp
@@ -58,11 +53,6 @@ select usequity
 select ustips
 select usstrips
 select audcash
-search
-and search
-clear 
-clear bookmark
-reset 
 actual postings
 cgml
 cgma
@@ -152,8 +142,6 @@ gbcorp but not
 gbpcash
 gbpcash 
 gbpcash but not
-clear
-and clear
 collateral usmuni and uscorp but not inrcash
 give collateral uscorp and inrcash but not usmuni
 collateral
@@ -194,8 +182,6 @@ legal entity cgna and cgma
 cgmi and cgna
 legal entity cgna but not cgmi
 cgml and cgna but not cgmi
-clear
-and clear
 select collateral
 select collateral gbcorp jpycash  
 collateral uscorp and gbpcash but not inrcash
@@ -265,10 +251,6 @@ collateral gbcorp legal entity cgml issue currency chf terminated
 has 
 has posted
 search
-and search
-clear 
-clear bookmark
-reset 
 actual postings
 aqua
 hi aqua

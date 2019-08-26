@@ -1,4 +1,5 @@
-aqua 
+giltlinker
+gilt linker 
 cgml
 cgma
 cgmi
@@ -8,8 +9,6 @@ inrcash
 jpycash
 usmuni
 aud
-hi aqua 
-ars
 chf
 cgml
 gbcorp
@@ -35,12 +34,11 @@ but not ustips
 but not usstrips
 but not audcash
 currency aud
-ars
 chf
-aqua 
-hi aqua
-aqua 
 currency chf 
+gilt
+gilt linker
+linker
 select uscorp
 select usmuni
 select cgma
@@ -67,30 +65,28 @@ cbna and cgml but not cgmi
 cbna  
 csa status
 dormant 
+gilt
+gilt linker
+linker
 csa status dormant
 drafted
-aqua 
-aqua aqua
 csa status drafted
 evergreen
 csa status evergreen
 executed
 csa status executed
 inactivated 
-csa status inactivated
-not covered 
-csa status not covered
+csa status inactivated 
+csa status 
 poposed
 csa status poposed
 terminated
 csa status terminated
-hi aqua
 dormant
 drafted
 evergreen
 executed
 inactivated
-not covered
 poposed
 terminated
 select csa status 
@@ -166,8 +162,6 @@ want collateral type name usequity but not usmuni
 ustips
 ustips but not
 usstrips
-aqua
-hi aqua
 audcash
 audcash but not
 legal entity
@@ -199,11 +193,12 @@ uscorp and usmuni but not inrcash
 collateral uscorp but not usmuni
 collateral usmuni and uscorp but not inrcash
 show legal entity
-hi aqua
-hi aqua
 uscorp and usmuni but not jpycash
 uscorp
 uscorp
+gilt
+gilt linker
+linker
 uscorp usmuni
 uscorp usmuni but not inrcash
 uscorp but not
@@ -246,11 +241,11 @@ collateral  inrcash legal entity cgmi issue currency chf drafted
 jpycash legal entity cgma issue currency aud csa status executed
 collateral uscorp legal entity cgml issue currency ars inactivated
 gbpcash legal entity cbna issue currency chf csa status not covered
-hi aqua
 collateral gbcorp legal entity cgml issue currency chf terminated
 has 
 has posted
 search
 actual postings
-aqua
-hi aqua
+gilt
+gilt linker
+linker

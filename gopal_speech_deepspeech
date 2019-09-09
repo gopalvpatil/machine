@@ -1,0 +1,302 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+su -
+admin
+above steps will take you to root
+
+Virtual Environment Creation
+
+mkdir gopal_speech
+cd gopal_speech
+mkdir deepspeech-venv
+virtualenv -p python3 ./deepspeech-venv/
+source ./deepspeech-venv/bin/activate
+check python --version should be 3.6 and pip --version
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Clone Deepspeech project in gopal_speech directory
+
+git clone https://github.com/mozilla/DeepSpeech
+git checkout v0.5.1
+
+or you can download at https://github.com/mozilla/DeepSpeech/archive/v0.5.1.tar.gz
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Pre trained language model verification:
+
+download sample data from https://github.com/mozilla/DeepSpeech/releases
+
+audio-0.5.1.tar.gz and extract to Deepspeech folder, this will create and rename to audio folder
+deepspeech-0.5.1-models.tar.gz to Deepspeech folder, this will creata and rename to models folder
+
+execute below command
+
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/2830-3980-0043.wav
+--> experience proof this
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/4507-16021-0012.wav
+--> why should one halt on the way
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/8455-210777-0068.wav
+--> your power is sufficient i said
+
+100% accurate
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Deepspeech and tensorflow installation to bin directory
+
+pip3 install deepspeech
+pip3 install tensorflow
+
+pip3 install -r requirements.txt (it will install all dependencies mentioned below like tensorFlow, pandas, progressbar, attr, xdg etc)
+
+	pip3 install $(python3 util/taskcluster.py --decoder)   -- here you can specify particuler version, in my case this defaulr 
+	version was giving mismatch version error hence i unstalled it and upgrade decoder
+
+--upgrade decoder to resolve file mismatch version error
+	Error: Trie file version mismatch (4 instead of expected 3). Update your trie file. 
+	first uninstall old version of decoder 
+	pip uninstall ds_ctcdecoder
+	and then run below,
+
+pip install --upgrade https://index.taskcluster.net/v1/task/project.deepspeech.deepspeech.native_client.cpu-ctc.033ee0f4c2b460b09e3de8725b5b8b2cc93717ec/artifacts/public/ds_ctcdecoder-0.5.0a4-cp36-cp36m-manylinux1_x86_64.whl
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Binary file creation setup
+
+cd /home/gopalvpatil/gopal_speech/DeepSpeech
+
+mkdir deepspeech-1.0.0-custom-models
+
+cd deepspeech-1.0.0-custom-models
+
+create prepare_binary.sh
+chmod +x prepare_binary.sh
+
+create or copy alphabet.txt file
+cp /home/gopalvpatil/anil_speech/kenlm/working15/alphabet.txt .
+
+sudo chown gopalvpatil:root ./*
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Binary file creation
+
+cd /home/gopalvpatil/gopal_speech/DeepSpeech/deepspeech-1.0.0-custom-models/model
+create vocabulary.txt
+chmod 777 *
+
+./prepare_binary.sh vocabulary.txt word.arpa lm.binary alphabet.txt trie model
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Test our audio file with pre trainined pbmm file with their lm and trie binaries
+
+cd /home/gopalvpatil/gopal_speech/DeepSpeech
+mkdir audio
+put all 16khz audio files into audio folder
+
+
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/select.wav
+
+--not accurate: select colleries man and escobar not in a cash and lecointe cima simile and has fostered elisia did
+
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/cgmi.wav
+
+-- accurate :: see my
+
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/cgml.wav
+
+-- not accurate :: seemed
+
+deepspeech --model models/output_graph.pbmm --alphabet models/alphabet.txt --lm models/lm.binary --trie models/trie --audio audio/output_1.wav
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Test our audio file with pre trainined pbmm file with own lm and trie binaries
+
+
+deepspeech --model models/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/select.wav
+
+--result accurate: select collateral type usmuni and uscorp but not inrcash and legal entity cgmi cgml and has posted locusd
+
+deepspeech --model models/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/cgmi.wav
+
+-- accurate :: cgmi
+
+deepspeech --model models/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/cgml.wav
+
+-- not accurate :: cgmi
+
+
+deepspeech --model models/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/output_1.wav
+deepspeech --model models/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/output_2.wav
+deepspeech --model models/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/output_3.wav
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Custom Language model creation : 
+
+1. /home/gopalvpatil/gopal_speech/DeepSpeech/custom_models directory:
+
+python3 -u DeepSpeech.py --checkpoint_dir ./custom_models/model1/results/checkout/ --export_dir  ./custom_models/model1/results/model_export/ --train_files ./custom_models/model1/train/train.csv --dev_files ./custom_models/model1/dev/dev.csv --test_files ./custom_models/model1/test/test.csv --n_hidden 2048 --epoch 3 --learning_rate 0.0001 --alphabet_config_path ./custom_models/model1/alphabet.txt --lm_binary_path ./custom_models/model1/lm.binary --lm_trie_path ./custom_models/model1/trie
+
+
+above step will create pb model @ 
+/home/gopalvpatil/gopal_speech/DeepSpeech/custom_models/model1/results/output_graph.pb
+
+2. /home/gopalvpatil/gopal_speech/DeepSpeech/deepspeech-1.0.0-custom-models directory: 
+
+mkdir model/results
+mkdir model/results/checkpoints
+mkdir model/results/model_export
+-----------------------------------------------------------
+vi model/voice.csv as shown below dont forget to add headers:
+-----------------------------------------------------------
+wav_filename,wav_filesize,transcript
+/home/gopalvpatil/gopal_speech/DeepSpeech/audio/select.wav,2326350,select collateral type usmuni and uscorp but not inrcash and legal entity cgmi cgml and has posted locusd
+/home/gopalvpatil/gopal_speech/DeepSpeech/audio/cgmi.wav,401230,cgmi
+/home/gopalvpatil/gopal_speech/DeepSpeech/audio/cgml.wav,219470,cgml
+
+-----------------------------------------------------------
+
+python3 -u DeepSpeech.py -checkpoint_dir ./deepspeech-1.0.0-custom-models/model/results/checkpoints/ --export_dir ./deepspeech-1.0.0-custom-models/model/results/model_export/ --train_files ./deepspeech-1.0.0-custom-models/model/voice.csv -dev_files ./deepspeech-1.0.0-custom-models/model/voice.csv --test_files ./deepspeech-1.0.0-custom-models/model/voice.csv --n_hidden 2048 --learning_rate 0.0001 --dropout_rate 0.15 --epoch 75 --lm_alpha 0.75 --lm_beta 1.85 -alphabet_config_path ./deepspeech-1.0.0-custom-models/alphabet.txt --lm_binary_path ./deepspeech-1.0.0-custom-models/model/lm.binary --lm_trie_path ./deepspeech-1.0.0-custom-models/model/trie
+
+python3 -u DeepSpeech.py -checkpoint_dir ./deepspeech-1.0.0-custom-models/model/results/checkpoints/ --export_dir ./deepspeech-1.0.0-custom-models/model/results/model_export/ --train_files ./deepspeech-1.0.0-custom-models/model/output.csv -dev_files ./deepspeech-1.0.0-custom-models/model/output.csv --test_files ./deepspeech-1.0.0-custom-models/model/output.csv --n_hidden 2048 --learning_rate 0.0001 --epoch 75 -alphabet_config_path ./deepspeech-1.0.0-custom-models/alphabet.txt --lm_binary_path ./deepspeech-1.0.0-custom-models/model/lm.binary --lm_trie_path ./deepspeech-1.0.0-custom-models/model/trie
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Convert output_graph.pb to output_graph.pbmm : - 
+
+	Download convert_graphdef_memmapped_format from 
+	https://index.taskcluster.net/v1/task/project.deepspeech.tensorflow.pip.master.cpu/artifacts/public/convert_graphdef_memmapped_format 
+
+	copy this file into Deepspeech/bin folder
+	change mode 
+	chmod +x ./bin/convert_graphdef_memmapped_format
+
+1. custom_models directory
+./bin/convert_graphdef_memmapped_format --in_graph=/home/gopalvpatil/gopal_speech/DeepSpeech/custom_models/model1/results/output_graph.pb --out_graph=/home/gopalvpatil/gopal_speech/DeepSpeech/custom_models/model1/results/output_graph.pbmm
+
+
+	above step will create pbmm model @ 
+	/home/gopalvpatil/gopal_speech/DeepSpeech/custom_models/model1/results/output_graph.pbmm
+
+
+2. deepspeech1.0.0-cusom-models directory
+
+
+./bin/convert_graphdef_memmapped_format --in_graph=/home/gopalvpatil/gopal_speech/DeepSpeech/deepspeech-1.0.0-custom-models/model/results/model_export/output_graph.pb --out_graph=/home/gopalvpatil/gopal_speech/DeepSpeech/deepspeech-1.0.0-custom-models/model/results/model_export/output_graph.pbmm
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Verify custom Language model creation: Test our audio file with custom trainined pbmm file with own lm and trie binaries
+
+
+1. custom_models directory
+
+deepspeech --model custom_models/model1/results/output_graph.pbmm --alphabet custom_models/model1/alphabet.txt --lm custom_models/model1/lm.binary --trie custom_models/model1/trie --audio custom_models/model1/train/select.wav
+
+deepspeech --model custom_models/model1/results/output_graph.pbmm --alphabet custom_models/model1/alphabet.txt --audio custom_models/model1/train/select.wav
+
+
+2. deepspeech1.0.0-cusom-models directory
+
+deepspeech --model deepspeech-1.0.0-custom-models/model/results/model_export/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/select.wav
+
+
+deepspeech --model deepspeech-1.0.0-custom-models/model/results/model_export/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/output_2.wav
+
+
+deepspeech --model deepspeech-1.0.0-custom-models/model/results/model_export/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/output_2.wav
+
+deepspeech --model deepspeech-1.0.0-custom-models/model/results/model_export/output_graph.pbmm --alphabet deepspeech-1.0.0-custom-models/alphabet.txt --lm deepspeech-1.0.0-custom-models/model/lm.binary --trie deepspeech-1.0.0-custom-models/model/trie --audio audio/output_3.wav
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Git Large File Storage setup: (To transfer output_graph.pbmm to office server)
+
+IMP url: 
+https://git-lfs.github.com/
+https://packagecloud.io/github/git-lfs/install#bash-python
+
+
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.python.sh | bash
+sudo apt-get install git-lfs
+
+git lfs install
+
+
+mkdir git_checkins
+cd git_checkins
+git clone https://github.com/gopalvpatil/custom_lang_model.git
+cd custom_lang_model
+git lfs track "*.psd"
+git lfs track "*.pbmm"
+git lfs track "*.pb
+git lfs track "*.tar.xz""
+git lfs track "*.zip"
+
+git add .gitattributes
+
+
+or
+wget https://github.com/git-lfs/git-lfs/releases/download/v2.4.0/git-lfs-linux-amd64-2.4.0.tar.gz
+tar -xvzf git-lfs-linux-amd64-2.4.0.tar.gz
+cd git-lfs-*
+./install.sh
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Getting the pre-trained model: 2 GB size
+go to gopal_speech/Deepspeech folder:
+
+wget https://github.com/mozilla/DeepSpeech/releases/download/v0.5.1/deepspeech-0.5.1-models.tar.gz
+tar xvfz deepspeech-0.5.1-models.tar.gz
+it will create models folder inside Deepspeech.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+WER: 0.100000, CER: 0.063492, loss: 33.570869
+ - src: "select collateral type usmuni and uscorp and has posted inrcash"
+ - res: "select collateral type usmuni and and uscorp and has posted inrcash"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 5.702834
+ - src: "has posted uscorp but not usmuni"
+ - res: "has posted uscorp but not usmuni"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 6.584341
+ - src: "select cgmi cgml cbna"
+ - res: "select cgmi cgml cbna"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 10.082104
+ - src: "select collateral type uscorp but not inrcash and has posted usmuni"
+ - res: "select collateral type uscorp but not inrcash and has posted usmuni"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 10.360415
+ - src: "has posted uscorp usmuni but not inrcash"
+ - res: "has posted uscorp usmuni but not inrcash"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 13.635375
+ - src: "but not cgmi cgml cbna"
+ - res: "but not cgmi cgml cbna"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 15.058944
+ - src: "collateral type uscorp usmuni gbpcash inrcash usequity locusd ustips usstrips"
+ - res: "collateral type uscorp usmuni gbpcash inrcash usequity locusd ustips usstrips"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 15.245949
+ - src: "but not uscorp usmuni gbpcash inrcash usequity locusd ustips usstrips"
+ - res: "but not uscorp usmuni gbpcash inrcash usequity locusd ustips usstrips"
+--------------------------------------------------------------------------------
+WER: 0.000000, CER: 0.000000, loss: 15.503604
+ - src: "select uscorp usmuni gbpcash inrcash usequity locusd ustips usstrips"
+ - res: "select uscorp usmuni gbpcash inrcash usequity locusd ustips usstrips"
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
